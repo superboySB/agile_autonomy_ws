@@ -85,6 +85,7 @@ catkin init && catkin config --extend /opt/ros/melodic && catkin config --merge-
 
 catkin build
 ```
+Before you finally launch the project, restart the container/machine is recommanded. 
 
 # Launch the project
 
