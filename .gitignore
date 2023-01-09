@@ -30,3 +30,19 @@
 *.exe
 *.out
 *.app
+
+# Build
+.catkin_tools
+build/
+devel/
+logs/
+
+# Unity Simulation
+.vscode
+src/.git
+src/.vscode
+src/rpg_flightmare/flightrender/flightmare_Data/
+src/rpg_flightmare/flightrender/flightmare.x86_64
+src/rpg_flightmare/flightrender/LinuxPlayer_s.debug
+src/rpg_flightmare/flightrender/UnityPlayer_s.debug
+src/rpg_flightmare/flightrender/UnityPlayer.so
