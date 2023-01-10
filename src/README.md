@@ -19,7 +19,7 @@ docker load < <IMAGENAME>.tar
 # run container (Open X11 at first)
 xhost +
 
-docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e ROS_IP=127.0.0.1 --gpus all --name test ros/noetic:v1 /bin/bash
+docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e ROS_IP=127.0.0.1 --gpus all --name test ros/melodic:v1 /bin/bash
 ```
 
 ## Useful commands
