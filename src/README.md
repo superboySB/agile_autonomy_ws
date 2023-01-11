@@ -36,7 +36,7 @@ docker attach test
 
 ## Install some apps
 ```sh
-sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool -y
+sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz -y
 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test && sudo apt upgrade libstdc++6 -y
 ```
@@ -74,9 +74,32 @@ chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender
 echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc && source ~/.bashrc
 ```
 
+
+## Recompile Quadrotor model (for applying MPC in real application)
+```sh
+git clone https://github.com/acado/acado.git -b stable ACADOtoolkit
+
+cd ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
+
+source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
+```
+Modify our model `quadrotor_model_thrustrates.cpp` for MPC, and then rebuild:
+```sh
+# generate quadrotor_model_codegen
+cd ~/agile_autonomy_ws/src/rpg_mpc/model/ && cmake . && make
+
+# generate quadrotor_mpc_codegen
+./quadrotor_model_codegen
+```
+Next, modify `parameters` in `rpg_quadrotor_control/simulation/rpg_rotors_interface`.
+
+
+
+
 ## Compile agile autonomy
 ```sh
 sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev libvulkan1 vulkan-utils gdb ros-melodic-octomap-msgs libsdl-image1.2-dev libsdl-dev ros-melodic-octomap ros-melodic-octomap-mapping ros-melodic-octomap-msgs libgoogle-glog-dev -y
+
 
 cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && cd agile_autonomy_ws
 
@@ -117,6 +140,9 @@ cd ~/agile_autonomy_ws && source devel/setup.sh && source ../cv_bridge_ws/instal
 roscd planner_learning && python3 test_trajectories.py --settings_file=config/test_settings.yaml
 ```
 
+# Learning Plans (From high to low level control)
+agile_autonomy, minimum_jerk_trajectories
 
+rpg_quadrotor_control, rpg_mpc
 
-
+rotors_simulator
