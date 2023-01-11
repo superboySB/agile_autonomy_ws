@@ -2,7 +2,7 @@
 
 1. Install ACADO as described in http://acado.github.io/install_linux.html
 
-2. Source the file ACADO_ROOT/build/acdo_env.sh
+2. source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
 
 3. Go into rpg_mpc/model
 

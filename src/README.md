@@ -59,7 +59,7 @@ cd ~ && git clone --recursive https://github.com/isl-org/Open3D.git && cd Open3D
 ```sh
 pip3 install catkin_pkg vcstool aiohttp
 
-mkdir -p cv_bridge_ws/src && cd cv_bridge_ws/src && git clone https://github.com/ros-perception/vision_opencv.git && apt-cache show ros-melodic-cv-bridge | grep Version && cd vision_opencv && git checkout 1.13.0 && cd ../../ 
+mkdir -p ~/cv_bridge_ws/src && cd ~/cv_bridge_ws/src && git clone https://github.com/ros-perception/vision_opencv.git && apt-cache show ros-melodic-cv-bridge | grep Version && cd vision_opencv && git checkout 1.13.0 && cd ../../ 
 
 # Maybe x86_64 should be replaced by aarch64 in embedded systems
 catkin config --install && catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so && catkin build && source install/setup.bash --extend
@@ -77,9 +77,9 @@ echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc
 
 ## Recompile Quadrotor model (for applying MPC in real application)
 ```sh
-git clone https://github.com/acado/acado.git -b stable ACADOtoolkit
+cd ~ && git clone https://github.com/acado/acado.git -b stable ACADOtoolkit
 
-cd ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
+cd ~/ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
 
 source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
 ```
@@ -92,9 +92,6 @@ cd ~/agile_autonomy_ws/src/rpg_mpc/model/ && cmake . && make
 ./quadrotor_model_codegen
 ```
 Next, modify `parameters` in `rpg_quadrotor_control/simulation/rpg_rotors_interface`.
-
-
-
 
 ## Compile agile autonomy
 ```sh
