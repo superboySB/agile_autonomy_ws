@@ -19,7 +19,7 @@ docker load < <IMAGENAME>.tar
 # run container (Open X11 at first)
 xhost +
 
-docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e ROS_IP=127.0.0.1 --gpus all --name test ros/noetic:v1 /bin/bash
+docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e ROS_IP=127.0.0.1 --gpus all --name test ros/melodic:v1 /bin/bash
 ```
 
 ## Useful commands
@@ -137,9 +137,13 @@ cd ~/agile_autonomy_ws && source devel/setup.sh && source ../cv_bridge_ws/instal
 roscd planner_learning && python3 test_trajectories.py --settings_file=config/test_settings.yaml
 ```
 
-# Learning Plans (From high to low level control)
-agile_autonomy, minimum_jerk_trajectories
+# Learning Plans (From high to low level control) - Fine-tune in low speed 
+[high] agile_autonomy, minimum_jerk_trajectories
 
-rpg_quadrotor_control, rpg_mpc
+[middle] rpg_quadrotor_control
 
-rotors_simulator
+3 controller: velocity controller/ position_controller (no collision aviodance) / rpg_mpc 
+
+rotors_gazebo_plugins: hummingbrid.xarco
+
+[low] rotors_simulator
