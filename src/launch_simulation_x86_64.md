@@ -1,8 +1,8 @@
-Note for superboySB
+Note for runing codes in x86_64 machines
+
 # Requirements
 Ubuntu 20.04 + RTX 3090
 
-nvidia docker
 
 # Build a nvidia docker
 ```sh
@@ -137,13 +137,3 @@ cd ~/agile_autonomy_ws && source devel/setup.sh && source ../cv_bridge_ws/instal
 roscd planner_learning && python3 test_trajectories.py --settings_file=config/test_settings.yaml
 ```
 
-# Learning Plans (From high to low level control) - Fine-tune in low speed 
-[high] agile_autonomy, minimum_jerk_trajectories
-
-[middle] rpg_quadrotor_control
-
-3 controller: velocity controller/ position_controller (no collision aviodance) / rpg_mpc 
-
-rotors_gazebo_plugins: hummingbrid.xarco
-
-[low] rotors_simulator
