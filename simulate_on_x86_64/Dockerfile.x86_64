@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-base:r32.3.1
+FROM nvcr.io/nvidia/l4t-base:r32.4.3
 
 LABEL Zipeng Dai <daizipeng@bit.edu.cn>
 LABEL Description="ROS-Melodic-Desktop with CUDA 11.4.2 and cuDNN 8 support (Jetson)" Vendor="TurluCode" Version="1.0"
@@ -113,18 +113,6 @@ RUN echo "export PATH=~/.local/bin:$PATH" | sudo tee -a ~/.bashrc
 # **********************************************
 # *           CUDA 11.4.2 + CUDNN 8            *
 # **********************************************
-RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/sbsa/cuda-ubuntu1804.pin
-RUN sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
-RUN wget https://developer.download.nvidia.com/compute/cuda/11.4.2/local_installers/cuda-repo-ubuntu1804-11-4-local_11.4.2-470.57.02-1_arm64.deb
-RUN sudo dpkg -i cuda-repo-ubuntu1804-11-4-local_11.4.2-470.57.02-1_arm64.deb
-RUN sudo apt-key add /var/cuda-repo-ubuntu1804-11-4-local/7fa2af80.pub
-RUN sudo apt-get update && sudo apt-get -y install cuda
-
-RUN echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.4/lib64" | sudo tee -a ~/.bashrc
-RUN echo "PATH=$PATH:/usr/local/cuda-11.4/bin" | sudo tee -a ~/.bashrc
-RUN echo "CUDA_HOME=$CUDA_HOME:/usr/local/cuda-11.4" | sudo tee -a ~/.bashrc
-RUN source ~/.bashrc
-
 # ## CUDA Base-packages
 # RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends gnupg2 curl ca-certificates && \
 #     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | sudo apt-key add - && \
@@ -219,23 +207,23 @@ RUN source ~/.bashrc
 # ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
 
 ## CUDNN Runtime-packages
-ENV NV_CUDNN_VERSION 8.2.4.15
-ENV NV_CUDNN_PACKAGE "libcudnn8=$NV_CUDNN_VERSION-1+cuda11.4"
-LABEL com.turlucode.ros.cudnn="${NV_CUDNN_VERSION}"
+# ENV NV_CUDNN_VERSION 8.2.4.15
+# ENV NV_CUDNN_PACKAGE "libcudnn8=$NV_CUDNN_VERSION-1+cuda11.4"
+# LABEL com.turlucode.ros.cudnn="${NV_CUDNN_VERSION}"
 
-RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-    ${NV_CUDNN_PACKAGE} && \
-    sudo rm -rf /var/lib/apt/lists/*
+# RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+#     ${NV_CUDNN_PACKAGE} && \
+#     sudo rm -rf /var/lib/apt/lists/*
 
-## CUDNN Devel-packages
-ENV NV_CUDNN_PACKAGE_DEV "libcudnn8-dev=$NV_CUDNN_VERSION-1+cuda11.4"
+# ## CUDNN Devel-packages
+# ENV NV_CUDNN_PACKAGE_DEV "libcudnn8-dev=$NV_CUDNN_VERSION-1+cuda11.4"
 
-RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
-    ${NV_CUDNN_PACKAGE} \
-    ${NV_CUDNN_PACKAGE_DEV} && \
-    sudo rm -rf /var/lib/apt/lists/*
+# RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+#     ${NV_CUDNN_PACKAGE} \
+#     ${NV_CUDNN_PACKAGE_DEV} && \
+#     sudo rm -rf /var/lib/apt/lists/*
 
-RUN sudo apt-mark hold libcudnn8
+# RUN sudo apt-mark hold libcudnn8
 # ****************************************************
 # *         CUDA 11.4.2 + CUDNN 8 Installed          *
 # ****************************************************
@@ -259,7 +247,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     # [Optional] Set the default user. Omit if you want to keep the default as root.
 USER $USERNAME
 
-
+RUN sudo -H pip3 install -U jetson-stats
 
 
 
