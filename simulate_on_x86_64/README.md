@@ -80,11 +80,11 @@ mkdir -p ~/cv_bridge_ws/src && tar -C ~/cv_bridge_ws/src/ -zxvf ~/agile_autonomy
 ## Compile our project
 Load Unity-3D simulation data at first, by downlaoding the flightmare standalone (Default:[X86_64](https://zenodo.org/record/5517791/files/standalone.tar?download=1), or recompile it in other platforms), extract it and put it in the "rpg_flightmare/flightrender/". We have finished the above process, so we only need to run:
 ```sh
-sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev libvulkan1 vulkan-utils gdb ros-melodic-octomap-msgs libsdl-image1.2-dev libsdl-dev ros-melodic-octomap ros-melodic-octomap-mapping ros-melodic-octomap-msgs libgoogle-glog-dev -y
+sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev libvulkan1 vulkan-utils gdb ros-melodic-octomap-msgs libsdl-image1.2-dev libsdl-dev ros-melodic-octomap ros-melodic-octomap-mapping ros-melodic-octomap-msgs libgoogle-glog-dev -y && echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc
 ```
 Every time when you change the code on the github in other machines, you can delete the project and then restart by:
 ```
-cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && cp -r ~/agile_autonomy_dependencies/standalone/20201127/* ~/agile_autonomy_ws/src/rpg_flightmare/flightrender/ && chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender && echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc && source ~/.bashrc
+cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && cp -r ~/agile_autonomy_dependencies/standalone/20201127/* ~/agile_autonomy_ws/src/rpg_flightmare/flightrender/ && chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender && source ~/.bashrc
 ```
 Note that x86_64 should be replaced by aarch64 in embedded systems (e.g., Jetson)
 ```
@@ -109,14 +109,15 @@ roscd planner_learning && python3 test_trajectories.py --settings_file=config/te
 
 # Debug the project
 ## Recompile Quadrotor model (Necessary for applying MPC in real application)
+Install the package
 ```sh
-cd ~ && git clone https://github.com/acado/acado.git -b stable ACADOtoolkit
-
-cd ~/ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
-
+cd ~ && git clone https://github.com/acado/acado.git -b stable ACADOtoolkit && cd ~/ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
+```
+It means successful by seeing a plotted window. **Everytime we want to recompile quadrotor model**, we need to start by:
+```
 source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
 ```
-Modify our model `quadrotor_model_thrustrates.cpp` for MPC, and then rebuild:
+Delete `quadrotor_model_codegen` and `quadrotor_mpc_codegen` in `rpg_mpc/model/`. Then, we can modify our model in `quadrotor_model_thrustrates.cpp` and rebuild:
 ```sh
 # generate quadrotor_model_codegen
 cd ~/agile_autonomy_ws/src/rpg_mpc/model/ && cmake . && make
@@ -124,4 +125,4 @@ cd ~/agile_autonomy_ws/src/rpg_mpc/model/ && cmake . && make
 # generate quadrotor_mpc_codegen
 ./quadrotor_model_codegen
 ```
-Next, modify `parameters` in `rpg_quadrotor_control/simulation/rpg_rotors_interface`.
+Next, we also need to modify `parameters` in `rpg_quadrotor_control/simulation/rpg_rotors_interface`.
