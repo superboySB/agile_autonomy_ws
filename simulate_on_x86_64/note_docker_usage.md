@@ -2,15 +2,28 @@ Note for an SB to build my own Dockerfile for Jetson, and test the container on 
 
 
 
-# Docker buld!
-For the ease of sending build context to Docker daemon, please move the Dockerfile to an empty dir and then build it.
+# Image
+There are mainly 3 ways to build images.
+```sh
+# Download from Dockerhub
+docker pull <repository>:<tag>
+
+# Build from a Dockerfile
+docker build .
+
+# Load From a saved image 
+docker load < <image-name>.tar
+```
+
+# Container
+Build a container froman image
 ```sh
 xhost +
 
-docker run --runtime nvidia -it --network host -v /tmp/.X11-unix:/tmp/.X11-unix --name xxx xxx/xxx:xxx  /bin/bash
+docker run --runtime nvidia -it --network host -v /tmp/.X11-unix:/tmp/.X11-unix --name <your-preferred-name> <repository>:<tag>  /bin/bash
 ```
 
-# Useful commands
+# Other Useful commands
 ```sh
 # If meet an image with name as <none>
 docker tag [IMAGE ID] [REPOSITORY]:[TAG]
