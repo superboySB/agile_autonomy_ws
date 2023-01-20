@@ -96,14 +96,16 @@ Before you finally launch the project, restart the container/machine is recomman
 ## Open a terminal for simulation (velocity control)
 ```sh
 cd ~/agile_autonomy_ws && source devel/setup.sh
-
+```
+```sh
 roslaunch agile_autonomy simulation.launch
 ```
 
 ## Open a new terminal (test AI-based navigation)
 ```sh
 cd ~/agile_autonomy_ws && source devel/setup.sh && source ../cv_bridge_ws/install/setup.sh --extend
-
+```
+```sh
 roscd planner_learning && python3 test_trajectories.py --settings_file=config/test_settings.yaml
 ```
 
