@@ -113,7 +113,7 @@ Install the package
 ```sh
 cd ~ && git clone https://github.com/acado/acado.git -b stable ACADOtoolkit && cd ~/ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
 ```
-It means successful by seeing a plotted window. **Everytime we want to recompile quadrotor model**, we need to start by:
+It means successful by seeing a plotted window. **Every time when we want to recompile quadrotor model**, we need to start by:
 ```
 source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
 ```
