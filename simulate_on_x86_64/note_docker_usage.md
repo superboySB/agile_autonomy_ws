@@ -15,6 +15,17 @@ docker build .
 docker load < <image-name>.tar
 ```
 
+Save an image
+```sh
+docker save > <image-name>.tar <repository>:<tag>
+```
+
+If meet an image with name as [none]
+
+```sh
+docker tag [IMAGE ID] [REPOSITORY]:[TAG]
+```
+  
 # Container
 Build a container froman image
 ```sh
@@ -22,17 +33,15 @@ xhost +
 
 docker run --runtime nvidia -it --network host -v /tmp/.X11-unix:/tmp/.X11-unix --name <your-preferred-name> <repository>:<tag>  /bin/bash
 ```
-
-# Other Useful commands
+run, detach and Reload:
 ```sh
-# If meet an image with name as <none>
-docker tag [IMAGE ID] [REPOSITORY]:[TAG]
-
-# Containers: run, detach and Reload:
 docker exec -it xxx /bin/bash
 ctrl + pq
 docker attach xxx
-
+```
+  
+# Other Useful commands
+```sh
 # Delete images
 docker rmi <your-image-id>
 docker rmi $(docker images -q)
