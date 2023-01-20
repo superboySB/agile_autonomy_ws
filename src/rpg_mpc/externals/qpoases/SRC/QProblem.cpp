@@ -20,7 +20,6 @@
  *
  */
 
-
 /**
  *	\file SRC/QProblem.cpp
  *	\author Hans Joachim Ferreau
@@ -31,6 +30,7 @@
  *	developed online active set strategy for parametric quadratic programming.
  */
 
+// 尝试学习一下这个老代码
 
 #include <QProblem.hpp>
 
