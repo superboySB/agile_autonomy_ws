@@ -37,7 +37,8 @@ mask ffffffffffffff00fffffffffffffffffeffffff
 ```
 Make sure the F flag is present, if not head to the troubleshooting section, as this will result in a failure to start the Jetson container. You’ll usually find errors in the form: exec user process caused "exec format error"
 
-# Build a nvidia docker
+# Configure the enironment
+##  Build a nvidia docker
 ```sh
 # Clone a docker file
 cd ~ && git clone https://LeakyCauldronTHU@bitbucket.org/LeakyCauldronTHU/ros-docker-gui.git
@@ -45,7 +46,7 @@ cd ~ && git clone https://LeakyCauldronTHU@bitbucket.org/LeakyCauldronTHU/ros-do
 # Build a docker image
 cd ~/ros-docker-gui && make nvidia_ros_melodic_cuda11-4-2_cudnn8
 
-# Load docker (if an image has been loaded from another machine)
+# Load an image (if an image has been loaded from another machine)
 docker load < <IMAGENAME>.tar
 
 # Open X11 at first
@@ -54,10 +55,6 @@ xhost +
 # Run a container
 docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e ROS_IP=127.0.0.1 --gpus all --name debug ros/melodic:v1 /bin/bash
 ```
-
-
-
-# Configure the enironment
 
 ## Install some apps
 ```sh
