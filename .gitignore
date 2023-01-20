@@ -42,7 +42,7 @@ logs/
 *.vscode*
 *.git*
 
-# Unity Simulation
+# Unity Simulation (Added to save spaces)
 src/rpg_flightmare/flightrender/flightmare_Data/
 src/rpg_flightmare/flightrender/flightmare.x86_64
 src/rpg_flightmare/flightrender/LinuxPlayer_s.debug
