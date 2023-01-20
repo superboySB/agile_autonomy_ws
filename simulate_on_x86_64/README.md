@@ -56,57 +56,35 @@ xhost +
 docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e ROS_IP=127.0.0.1 --gpus all --name debug ros/melodic:v1 /bin/bash
 ```
 
-## Install some apps
+## Install dependencies (e.g., vscode, tensorflow)
 ```sh
-sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz -y
-
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test && sudo apt upgrade libstdc++6 -y
+sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz software-properties-common apt-transport-https curl -y && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt upgrade libstdc++6 -y && pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple && pip3 install tensorflow-gpu==2.5 rospkg==1.2.3 pyquaternion open3d opencv-python catkin_pkg vcstool aiohttp -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-## Install tensorflow
+## Download apps from gitee (faster)
 ```sh
-pip3 install -U pip
-
-pip3 install tensorflow-gpu==2.5 -y && pip3 install rospkg==1.2.3 pyquaternion open3d opencv-python
+cd ~ && git clone https://gitee.com/superboySB/agile_autonomy_dependencies.git && tar -C ~/agile_autonomy_dependencies/ -zxvf ~/agile_autonomy_dependencies/standalone.tgz
 ```
 
-
-
-## Install Open3d
+## Install open3d
 ```sh
-cd ~ && git clone --recursive https://github.com/isl-org/Open3D.git && cd Open3D && git checkout v0.9.0 && util/scripts/install-deps-ubuntu.sh && git submodule update --init --recursive && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=ON .. && make -j16 && sudo make install
+tar -C ~/ -zxvf ~/agile_autonomy_dependencies/Open3D.tgz && cd ~/Open3D/ && util/scripts/install-deps-ubuntu.sh assume-yes && mkdir build && cd build && cmake -DBUILD_SHARED_LIBS=ON .. && make -j16 && sudo make install
 ```
 
-## Recompile cv_bridge
-```sh
-pip3 install catkin_pkg vcstool aiohttp
-
-mkdir -p ~/cv_bridge_ws/src && cd ~/cv_bridge_ws/src && git clone https://github.com/ros-perception/vision_opencv.git && apt-cache show ros-melodic-cv-bridge | grep Version && cd vision_opencv && git checkout 1.13.0 && cd ../../ 
-
-# Maybe x86_64 should be replaced by aarch64 in embedded systems
-catkin config --install && catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so && catkin build && source install/setup.bash --extend
+## Install cv_bridge
+Note that x86_64 should be replaced by aarch64 in embedded systems (e.g., Jetson)
+```
+mkdir -p ~/cv_bridge_ws/src && tar -C ~/cv_bridge_ws/src/ -zxvf ~/agile_autonomy_dependencies/vision_opencv.tgz && apt-cache show ros-melodic-cv-bridge | grep Version && cd ~/cv_bridge_ws/ && catkin config --install && catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so && catkin build && source install/setup.bash --extend
 ```
 
-## Load Unity-3D simulation data
-Downlaod the flightmare standalone (Default:[X86_64](https://zenodo.org/record/5517791/files/standalone.tar?download=1), or recompile it in other platforms), extract it and put it in the "rpg_flightmare/flightrender/".
-
+## Compile our project
+Load Unity-3D simulation data at first, by downlaoding the flightmare standalone (Default:[X86_64](https://zenodo.org/record/5517791/files/standalone.tar?download=1), or recompile it in other platforms), extract it and put it in the "rpg_flightmare/flightrender/". We have finished the above process, so we only need to run:
 ```sh
-chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender
-
-echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc && source ~/.bashrc
+sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev libvulkan1 vulkan-utils gdb ros-melodic-octomap-msgs libsdl-image1.2-dev libsdl-dev ros-melodic-octomap ros-melodic-octomap-mapping ros-melodic-octomap-msgs libgoogle-glog-dev -y && cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && mv ~/agile_autonomy_dependencies/standalone/20201127/* ~/agile_autonomy_ws/src/rpg_flightmare/flightrender/ && chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender && echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc && source ~/.bashrc
 ```
-
-## Compile agile autonomy
-```sh
-sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev libvulkan1 vulkan-utils gdb ros-melodic-octomap-msgs libsdl-image1.2-dev libsdl-dev ros-melodic-octomap ros-melodic-octomap-mapping ros-melodic-octomap-msgs libgoogle-glog-dev -y
-
-
-cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && cd agile_autonomy_ws
-
-# Maybe x86_64 should be replaced by aarch64 in embedded systems
-catkin init && catkin config --extend /opt/ros/melodic && catkin config --merge-devel && catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-fdiagnostics-color && catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so
-
-catkin build
+Note that x86_64 should be replaced by aarch64 in embedded systems (e.g., Jetson)
+```
+cd ~/agile_autonomy_ws && catkin init && catkin config --extend /opt/ros/melodic && catkin config --merge-devel && catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-fdiagnostics-color && catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so && catkin build
 ```
 Before you finally launch the project, restart the container/machine is recommanded. 
 
