@@ -61,9 +61,15 @@ docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v 
 sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz software-properties-common apt-transport-https curl -y && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt upgrade libstdc++6 -y && pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple && pip3 install tensorflow-gpu==2.5 rospkg==1.2.3 pyquaternion open3d opencv-python catkin_pkg vcstool aiohttp -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-## Download apps from gitee (faster)
+## Download apps from our pre-built version (faster)
+Download several essential apps from [our pre-built copies (online supported by OneDrive)](https://superboysb-my.sharepoint.cn/:f:/g/personal/admin_superboysb_partner_onmschina_cn/Eiay3rqvyGJBn9FubguX6E8BRw5kl5M_5XiHmc_OUlQ7WA?e=qa1u2s), inluding: 1) pre-built ROS container; 2) pre-compiled Open3D+cv_bridge; 3) the Unity-3D flightmare standalone. Then, you can run:
+
 ```sh
-cd ~ && git clone https://gitee.com/superboySB/agile_autonomy_dependencies.git && tar -C ~/agile_autonomy_dependencies/ -zxvf ~/agile_autonomy_dependencies/standalone.tgz
+docker cp /home/xxx/Downloads/agile_autonomy_dependencies debug:/home/qiyuan/
+```
+
+```sh
+cd ~ && tar -C ~/agile_autonomy_dependencies/ -zxvf ~/agile_autonomy_dependencies/standalone.tgz
 ```
 
 ## Install open3d
@@ -86,7 +92,7 @@ sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-de
 ```
 cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && cp -r ~/agile_autonomy_dependencies/standalone/20201127/* ~/agile_autonomy_ws/src/rpg_flightmare/flightrender/ && chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender && source ~/.bashrc
 ```
-Note that x86_64 should be replaced by aarch64 in embedded systems (e.g., Jetson)
+Below is built on x86_64 Linux OS platform. Note that x86_64 should be replaced by aarch64 in embedded systems (e.g., Jetson)
 ```
 cd ~/agile_autonomy_ws && catkin init && catkin config --extend /opt/ros/melodic && catkin config --merge-devel && catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-fdiagnostics-color && catkin config -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so && catkin build
 ```
@@ -109,22 +115,4 @@ cd ~/agile_autonomy_ws && source devel/setup.sh && source ../cv_bridge_ws/instal
 roscd planner_learning && python3 test_trajectories.py --settings_file=config/test_settings.yaml
 ```
 
-# Debug the project
-## Recompile Quadrotor model (Necessary for applying MPC in real application)
-Install the package
-```sh
-cd ~ && git clone https://github.com/acado/acado.git -b stable ACADOtoolkit && cd ~/ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
-```
-It means successful by seeing a plotted window. **Every time when we want to recompile quadrotor model**, we need to start by:
-```
-source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
-```
-Delete `quadrotor_model_codegen` and `quadrotor_mpc_codegen` in `rpg_mpc/model/`. Then, we can modify our model in `quadrotor_model_thrustrates.cpp` and rebuild:
-```sh
-# generate quadrotor_model_codegen
-cd ~/agile_autonomy_ws/src/rpg_mpc/model/ && cmake . && make
 
-# generate quadrotor_mpc_codegen
-./quadrotor_model_codegen
-```
-Next, we also need to modify `parameters` in `rpg_quadrotor_control/simulation/rpg_rotors_interface`.
