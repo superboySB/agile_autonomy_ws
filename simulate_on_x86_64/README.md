@@ -58,7 +58,7 @@ docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v 
 
 ## Install dependencies (e.g., vscode, tensorflow)
 ```sh
-sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz software-properties-common apt-transport-https curl -y && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt upgrade libstdc++6 -y && pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple && pip3 install tensorflow-gpu==2.5 rospkg==1.2.3 pyquaternion open3d opencv-python catkin_pkg vcstool aiohttp -i https://pypi.tuna.tsinghua.edu.cn/simple
+sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz software-properties-common apt-transport-https curl -y && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt upgrade libstdc++6 -y && pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple && pip3 install tensorflow-gpu==2.5 rospkg==1.2.3 pyquaternion open3d opencv-python catkin_pkg vcstool netifaces aiohttp -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## Download apps from our pre-built version (faster)
@@ -103,8 +103,29 @@ Before you finally launch the project, restart the container/machine is recomman
 ```sh
 cd ~/agile_autonomy_ws && source devel/setup.sh
 ```
+[Default] Single Machine:
 ```sh
 roslaunch agile_autonomy simulation.launch
+```
+
+[Optional] If you want to use the communication of the two local machines, please add these environmental variables to your `bashrc`:
+```
+export ROS_IP=[slaver_ip]
+export ROS_MASTER_URI=http://[master_ip]:11311
+export ROS_HOSTNAME=$ROS_IP
+```
+And then the master machine can run:
+```sh
+roslaunch agile_autonomy simulation_dist_master.launch
+```
+Likewise, the slaver machine can run:
+```sh
+roslaunch agile_autonomy simulation_dist_slaver.launch
+```
+
+[Optional] Run without rendering Fightmare simulation (Necessary for training in powerful servers)
+```sh
+roslaunch agile_autonomy simulation_backend.launch
 ```
 
 ## Open a new terminal (test AI-based navigation)

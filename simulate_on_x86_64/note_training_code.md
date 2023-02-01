@@ -3,6 +3,7 @@ Note for how to retrain or fine-tune the codes in lower speed
 # Learning Plans (From high to low level control)
 We need to read and modify these modules:
 ## [high] agile_autonomy, minimum_jerk_trajectories
+agile_autonomy GPU>9GB (?)
 
 ## [middle] rpg_quadrotor_control
 
@@ -14,6 +15,7 @@ rotors_gazebo_plugins: hummingbrid.xarco
 
 
 # Debug the project
+
 ## Recompile Quadrotor model (Necessary for applying MPC in real application)
 Install the package
 ```sh
