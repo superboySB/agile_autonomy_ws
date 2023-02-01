@@ -23,6 +23,8 @@
   <arg name="debug"/>
   <arg name="verbose"/>
 
+  <arg name="use_quad_gui" default="true"/>
+
   <!-- Gazebo stuff to spawn the world !-->
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models:$(arg custom_models)"/>
   <env name="GAZEBO_PLUGIN_PATH" value="${GAZEBO_PLUGIN_PATH}:$(arg custom_plugins)"/>
@@ -140,7 +142,7 @@
     </node>
 
     <node name="rqt_quad_gui" pkg="rqt_gui" type="rqt_gui" args="-s rqt_quad_gui.basic_flight.BasicFlight --args 
-        --quad_name $(arg quad_name)" output="screen"/>
+        --quad_name $(arg quad_name)" output="screen" if="$(arg use_quad_gui)"/>
 
   </group>
 

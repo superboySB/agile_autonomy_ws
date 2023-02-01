@@ -16,6 +16,7 @@ rotors_gazebo_plugins: hummingbrid.xarco
 
 # Debug the project
 
+
 ## Recompile Quadrotor model (Necessary for applying MPC in real application)
 Install the package
 ```sh

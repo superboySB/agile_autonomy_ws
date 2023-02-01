@@ -89,8 +89,11 @@ Load Unity-3D simulation data at first, by downlaoding the flightmare standalone
 sudo apt-get install libqglviewer-dev-qt5 libzmqpp-dev libeigen3-dev libglfw3-dev libglm-dev libvulkan1 vulkan-utils gdb ros-melodic-octomap-msgs libsdl-image1.2-dev libsdl-dev ros-melodic-octomap ros-melodic-octomap-mapping ros-melodic-octomap-msgs libgoogle-glog-dev -y && echo 'export RPGQ_PARAM_DIR=~/agile_autonomy_ws/src/rpg_flightmare' >> ~/.bashrc
 ```
 **Every time when you change the code in other machines**, you can delete the project and then restart by:
+```sh
+cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git
 ```
-cd ~ && git clone https://github.com/superboySB/agile_autonomy_ws.git && cp -r ~/agile_autonomy_dependencies/standalone/20201127/* ~/agile_autonomy_ws/src/rpg_flightmare/flightrender/ && chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender && source ~/.bashrc
+```sh
+cp -r ~/agile_autonomy_dependencies/standalone/20201127/* ~/agile_autonomy_ws/src/rpg_flightmare/flightrender/ && chmod 777 -R ~/agile_autonomy_ws/src/rpg_flightmare/flightrender && source ~/.bashrc
 ```
 Below is built on x86_64 Linux OS platform. Note that x86_64 should be replaced by aarch64 in embedded systems (e.g., Jetson)
 ```

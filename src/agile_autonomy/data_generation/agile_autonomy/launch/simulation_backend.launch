@@ -18,10 +18,13 @@
     <arg name="log_file" default="$(arg quad_name)"/>
     <arg name="paused" value="false"/>
     <arg name="gui" value="false"/>
-    <arg name="use_unity" default="true"/>
     <arg name="use_ground_truth" value="true"/>
     <arg name="verbose" default="false"/>
     <arg name="debug" default="false"/>
+    <arg name="use_quad_gui" default="false"/>
+    <arg name="use_rviz" default="false"/>
+    <arg name="use_unity" default="true"/>
+
 
     <!-- Basic simulation environment -->
     <include file="$(find rpg_rotors_interface)/launch/basics/base_quad_simulation.launch">
@@ -45,6 +48,8 @@
 
         <arg name="x_init" value="$(arg x_init)"/>
         <arg name="y_init" value="$(arg y_init)"/>
+
+        <arg name="use_quad_gui" value="$(arg use_quad_gui)"/>
     </include>
 
     <param name="/$(arg quad_name)/agile_autonomy/general/real_world_exp" value="false"/>
@@ -73,9 +78,10 @@
     <include file="$(find traj_sampler)/launch/generate_label_8.launch"/>
 
     <!-- Visualization -->
-    <!-- <node pkg="rviz" type="rviz" name="viz_face" args="-d $(find agile_autonomy)/resources/rviz/simulation.rviz"/> -->
+    <node pkg="rviz" type="rviz" name="viz_face" args="-d $(find agile_autonomy)/resources/rviz/simulation.rviz" if="$(arg use_rviz)"/>
 
     <!-- Flightmare Standalone -->
-    <!-- <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" if="$(arg use_unity)"/> -->
+    <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" args="-batchmode -nographics" if="$(arg use_unity)"/>
+    <!-- <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" args="" if="$(arg use_unity)"/> -->
 
 </launch>
