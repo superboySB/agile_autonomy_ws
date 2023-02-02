@@ -81,7 +81,7 @@
     <node pkg="rviz" type="rviz" name="viz_face" args="-d $(find agile_autonomy)/resources/rviz/simulation.rviz" if="$(arg use_rviz)"/>
 
     <!-- Flightmare Standalone -->
-    <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" args="-batchmode -nographics" if="$(arg use_unity)"/>
-    <!-- <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" args="" if="$(arg use_unity)"/> -->
+    <!-- <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" args="-batchmode -nographics -no-stereo-rendering –quit" if="$(arg use_unity)"/> -->
+    <node name="flight_render" pkg="flightrender" type="flightmare.x86_64" args="" if="$(arg use_unity)"/>
 
 </launch>
