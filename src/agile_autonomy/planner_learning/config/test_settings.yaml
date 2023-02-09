@@ -1,4 +1,4 @@
-quad_name: 'hummingbird'
+quad_name: 'hummingbird'  # 
 odometry_topic: 'ground_truth/odometry'
 rgb_topic: 'agile_autonomy/unity_rgb'
 depth_topic: 'agile_autonomy/sgm_depth'

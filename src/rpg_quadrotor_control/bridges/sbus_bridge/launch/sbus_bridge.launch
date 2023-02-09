@@ -12,6 +12,7 @@
     <param name="board_name" value="up" />
     <param name="adc_id" value="0" />
     <param name="read_voltage_frequency" value="10" />
+    <!-- TODO: 下面的数值在实测的时候被建飞老师改过，映射实际电压的量纲（锂电3-5V），用于调整PID下的转速 -->
     <param name="voltage_divider_upper_res" value="11.92" />
     <param name="voltage_divider_lower_res" value="2.704" />
 

@@ -1,7 +1,7 @@
 Note for runing codes in x86_64 machines
 
 # Requirements
-Preferred: An x86_64 workstation + Ubuntu 20.04 + RTX 3090
+Preferred: An x86_64 workstation + Ubuntu 20.04 (ROS-Noetic)+ RTX 3090
 
 ## Install joy in the **localhost** machine (Necessary for VELOCITY_CONTROL mode)
 ```sh
@@ -140,3 +140,15 @@ roscd planner_learning && python3 test_trajectories.py --settings_file=config/te
 ```
 
 
+# TroubleShooting
+## Q&A
+
+1. git clone is very slow
+
+```sh
+# set
+git config ---global http.https://github.com.proxy socks5://127.0.0.1:<proxy-port>
+
+# unset
+git config --global --unset http.proxy && git config --global --unset https.proxy
+```
