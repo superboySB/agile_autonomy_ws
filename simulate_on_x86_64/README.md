@@ -147,7 +147,7 @@ roscd planner_learning && python3 test_trajectories.py --settings_file=config/te
 
 ```sh
 # set
-git config ---global http.https://github.com.proxy socks5://127.0.0.1:<proxy-port>
+git config --global http.https://github.com.proxy socks5://127.0.0.1:<proxy-port>
 
 # unset
 git config --global --unset http.proxy && git config --global --unset https.proxy
