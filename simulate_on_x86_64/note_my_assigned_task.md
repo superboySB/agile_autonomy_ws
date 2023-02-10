@@ -1,4 +1,4 @@
-Note for how to retrain or fine-tune the codes in lower speed 
+Note for learning how to retrain or fine-tune the codes in lower speed 
 
 # Learning Plans (From high to low level control)
 We need to read and modify these modules:
