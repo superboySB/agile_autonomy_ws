@@ -1,3 +1,7 @@
+# [SB] Speed Change:
+# Edit the `test_time_velocity` and `maneuver_velocity` to the required speed. 
+# Note that the ckpt we provide will work for all speeds in the range [1,10] m/s. 
+# However, to reach the best performance at a specific speed, please consider finetuning the ckpt at the desired speed
 general:
   control_command_delay: 0.02
   nw_predictions_frame_id: 1  # 0: world, 1: body

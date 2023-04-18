@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/qiyuan/agile_autonomy_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "/usr/bin/python3"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/qiyuan/agile_autonomy_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "/usr/bin/python3"
+    ]
+}

@@ -1,0 +1,456 @@
+<launch>
+    <arg name="quad_name" default="hummingbird"/>
+
+    <group ns="$(arg quad_name)">
+        <!-- Label Generation -->
+        <arg name="data_dir" default="$(find agile_autonomy)/../data"/>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_0" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="0"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_1" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="1"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_2" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="2"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_3" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="3"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_4" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="4"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_5" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="5"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_6" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="6"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_7" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="7"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_8" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="8"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_9" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="9"/>
+            <r<rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_10" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="10"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_11" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="11"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_12" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="12"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_13" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="13"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_14" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="14"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_15" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="15"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_16" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="16"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_17" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="17"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_18" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="18"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_19" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="19"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_20" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="20"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_21" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="21"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_22" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="22"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_23" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="23"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_24" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="24"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_25" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="25"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_26" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="26"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_27" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="27"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_28" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="28"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_29" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="29"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_30" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="30"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_31" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="31"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_32" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="32"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_33" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="33"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_34" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="34"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_35" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="35"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_36" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="3"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_37" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="37"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_38" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="38"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_39" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="39"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_40" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="40"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_41" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="41"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_42" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="42"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_43" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="43"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_44" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="44"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_45" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="45"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_46" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="46"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_47" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="47"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_48" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="48"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_49" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="49"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_50" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="50"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_51" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="51"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_52" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="52"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_53" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="53"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_54" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="54"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_55" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="55"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_56" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="56"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_57" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="57"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_58" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="58"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_59" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="59"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_60" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="60"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_61" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="61"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_62" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="62"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+        <node pkg="traj_sampler" type="generate_label" name="generate_label_63" output="screen"> <!--  launch-prefix="gdb -ex run - -args" -->
+            <param name="data_dir" value="$(arg data_dir)"/>
+            <param name="n_threads" value="64"/>
+            <param name="thread_idx" value="63"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/mpc_params.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/traj_sampler/label_generation.yaml"/>
+        </node>
+    </group>
+</launch>

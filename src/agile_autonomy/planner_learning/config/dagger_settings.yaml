@@ -1,4 +1,4 @@
-log_dir: '/tmp/train_7m_object_straight/'
+log_dir: '~/train_log/'
 quad_name: 'hummingbird'
 odometry_topic: 'ground_truth/odometry'
 rgb_topic: 'agile_autonomy/unity_rgb'
@@ -20,7 +20,7 @@ data_generation:
   increase_net_usage_every_n_rollouts: 10
 checkpoint:
   resume_training: True
-  resume_file: "models/ckpt-50"
+  resume_file: "models/original/ckpt-50"
 train:
   max_training_epochs: 5
   batch_size: 8

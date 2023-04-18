@@ -1,0 +1,60 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/qiyuan/agile_autonomy_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/agile_autonomy/data_generation/agile_autonomy/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/agile_autonomy/data_generation/agile_autonomy_utils/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/control/autopilot/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpl_ros/DecompROS/decomp_ros_utils/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpl_ros/DecompROS/DecompUtil/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/eigen_checks/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_flightmare/examples/example_control/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/utils/manual_flight_assistant/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/mav_comm/mav_msgs/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/mav_comm/mav_planning_msgs/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/minimum_jerk_trajectories/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/minkindr/minkindr/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/minkindr_ros/minkindr_conversions/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpl_ros/motion_primitive_library/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpl_ros/mpl_external_planner/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/numpy_eigen/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpl_ros/open3d_conversions/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpl_ros/planning_ros_utils/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/trajectory_planning/polynomial_trajectories/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/control/position_controller/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_common/quadrotor_common/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rotors_simulator/rotors_control/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rotors_simulator/rotors_gazebo_plugins/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rotors_simulator/rotors_hil_interface/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rotors_simulator/rotors_joy_interface/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_common/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_mpc/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/test/rpg_quadrotor_integration_test/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/simulation/rpg_rotors_interface/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_single_board_io/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_flightmare/rpgq_command_bridge/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_flightmare/rpgq_common/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_flightmare/rpgq_components/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_flightmare/rpgq_simulator/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/bridges/sbus_bridge/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_common/state_predictor/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/agile_autonomy/data_generation/traj_sampler/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/trajectory_planning/trajectory_generation_helper/include/**",
+        "/home/qiyuan/agile_autonomy_ws/src/rpg_quadrotor_control/utils/trajectory_visualizer/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++17"
+    }
+  ],
+  "version": 4
+}

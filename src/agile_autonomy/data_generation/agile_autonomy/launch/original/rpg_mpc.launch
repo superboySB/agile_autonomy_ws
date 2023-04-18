@@ -9,9 +9,9 @@
     <group ns="$(arg quad_name)">
         <group if="$(arg use_ground_truth)">
             <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-                <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml"/>
-                <rosparam file="$(find rpg_mpc)/parameters/default.yaml"/>
-                <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
                 <param name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>
                 <param name="state_estimate_timeout" value="0.1"/>
                 <param name="control_command_delay" value="0.05"/>
@@ -23,9 +23,9 @@
 
         <group unless="$(arg use_ground_truth)">
             <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-                <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml"/>
-                <rosparam file="$(find rpg_mpc)/parameters/default.yaml"/>
-                <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
                 <param name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>
                 <param name="state_estimate_timeout" value="0.1"/>
                 <param name="control_command_delay" value="0.05"/>

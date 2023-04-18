@@ -30,9 +30,9 @@ AgileAutonomy::AgileAutonomy(const ros::NodeHandle& nh,
   visualizer_ =
       std::make_shared<visualizer::Visualizer>(nh_, pnh_, "agile_autonomy");
   // Subscribers
-  toggle_experiment_sub_ =
-      nh_.subscribe("fpv_quad_looping/execute_trajectory", 1,
-                    &AgileAutonomy::startExecutionCallback, this);
+  // toggle_experiment_sub_ =
+  //     nh_.subscribe("fpv_quad_looping/execute_trajectory", 1,
+  //                   &AgileAutonomy::startExecutionCallback, this);  //[SB] Seems that we do not use it
   odometry_sub_ = nh_.subscribe("ground_truth/odometry", 1,
                                 &AgileAutonomy::odometryCallback, this,
                                 ros::TransportHints().tcpNoDelay());

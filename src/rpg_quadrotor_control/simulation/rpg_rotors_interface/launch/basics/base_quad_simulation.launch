@@ -55,7 +55,7 @@
 
     <group if="$(arg use_ground_truth)">
       <node pkg="rpg_rotors_interface" type="rpg_rotors_interface" name="rpg_rotors_interface" output="screen">
-        <rosparam file="$(find rpg_rotors_interface)/parameters/rpg_rotors_interface.yaml" />
+        <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/rpg_rotors_interface.yaml"/>
 
         <remap from="odometry" to="ground_truth/odometry" />
         <remap from="rpg_rotors_interface/arm" to="bridge/arm" />
@@ -64,9 +64,9 @@
       <!-- Autopilot -->
       <group unless="$(arg use_mpc)">
         <node pkg="autopilot" type="autopilot" name="autopilot" output="screen">
-          <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml" />
-          <rosparam file="$(find rpg_rotors_interface)/parameters/position_controller.yaml" />
-          <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml" />
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/position_controller.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
           <param name="position_controller/use_rate_mode" value="True" />
 
@@ -80,9 +80,9 @@
       </group>
       <group if="$(arg use_mpc)">
         <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-          <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml" />
-          <rosparam file="$(find rpg_mpc)/parameters/default.yaml" />
-          <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml" />
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
           <param name="velocity_estimate_in_world_frame" value="false" />
           <param name="state_estimate_timeout" value="0.1" />
@@ -96,7 +96,7 @@
 
     <group unless="$(arg use_ground_truth)">
       <node pkg="rpg_rotors_interface" type="rpg_rotors_interface" name="rpg_rotors_interface" output="screen">
-        <rosparam file="$(find rpg_rotors_interface)/parameters/rpg_rotors_interface.yaml" />
+        <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/rpg_rotors_interface.yaml"/>
 
         <remap from="odometry" to="odometry_sensor1/odometry" />
         <remap from="rpg_rotors_interface/arm" to="bridge/arm" />
@@ -105,9 +105,9 @@
       <!-- Autopilot -->
       <group unless="$(arg use_mpc)">
         <node pkg="autopilot" type="autopilot" name="autopilot" output="screen">
-          <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml" />
-          <rosparam file="$(find rpg_rotors_interface)/parameters/position_controller.yaml" />
-          <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml" />
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/position_controller.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
           <param name="position_controller/use_rate_mode" value="True" />
 
@@ -120,9 +120,9 @@
       </group>
       <group if="$(arg use_mpc)">
         <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-          <rosparam file="$(find state_predictor)/parameters/hummingbird.yaml" />
-          <rosparam file="$(find rpg_mpc)/parameters/default.yaml" />
-          <rosparam file="$(find rpg_rotors_interface)/parameters/autopilot.yaml" />
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
           <param name="velocity_estimate_in_world_frame" value="false" />
           <param name="state_estimate_timeout" value="0.1" />
@@ -138,7 +138,7 @@
     </node>
 
     <node pkg="manual_flight_assistant" type="manual_flight_assistant" name="manual_flight_assistant" output="screen">
-      <rosparam file="$(find rpg_rotors_interface)/parameters/manual_flight_assistant.yaml"/>
+      <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/manual_flight_assistant.yaml"/>
     </node>
 
     <node name="rqt_quad_gui" pkg="rqt_gui" type="rqt_gui" args="-s rqt_quad_gui.basic_flight.BasicFlight --args 

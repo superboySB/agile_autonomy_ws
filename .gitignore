@@ -39,7 +39,6 @@ logs/
 
 # Cache
 *__pycache__*
-*.vscode*
 *.git*
 
 # Unity Simulation (Added to save spaces)
@@ -48,3 +47,8 @@ src/rpg_flightmare/flightrender/flightmare.x86_64
 src/rpg_flightmare/flightrender/LinuxPlayer_s.debug
 src/rpg_flightmare/flightrender/UnityPlayer_s.debug
 src/rpg_flightmare/flightrender/UnityPlayer.so
+
+# save files
+src/agile_autonomy/data_generation/data
+src/agile_autonomy/planner_learning/data
+src/agile_autonomy/planner_learning/~

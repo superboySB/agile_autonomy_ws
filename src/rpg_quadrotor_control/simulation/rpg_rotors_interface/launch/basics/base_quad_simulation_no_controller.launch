@@ -55,7 +55,7 @@
 
     <node pkg="manual_flight_assistant" type="manual_flight_assistant" 
         name="manual_flight_assistant" output="screen">
-      <rosparam file="$(find rpg_rotors_interface)/parameters/manual_flight_assistant.yaml"/>
+      <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/manual_flight_assistant.yaml"/>
     </node>
 
     <node name="rqt_quad_gui" pkg="rqt_gui" type="rqt_gui" 

@@ -58,7 +58,7 @@ docker run -it --privileged --net=host --ipc=host --device=/dev/dri:/dev/dri -v 
 
 ## Install dependencies (e.g., vscode, tensorflow)
 ```sh
-sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz software-properties-common apt-transport-https curl -y && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt upgrade libstdc++6 -y && pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple && pip3 install tensorflow-gpu==2.5 rospkg==1.2.3 pyquaternion open3d opencv-python catkin_pkg vcstool netifaces aiohttp -i https://pypi.tuna.tsinghua.edu.cn/simple
+sudo apt-get update && sudo apt-get install git python3-pip lsb-core vim gedit locate python-catkin-tools wget desktop-file-utils python3-empy python3-vcstool gcc g++ cmake git gnuplot doxygen graphviz software-properties-common apt-transport-https curl -y && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && sudo apt update && sudo apt install code -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt upgrade libstdc++6 -y && pip3 install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple && pip3 install tensorflow-gpu==2.5 rospkg==1.2.3 pyquaternion open3d opencv-python catkin_pkg vcstool netifaces aiohttp -i https://pypi.tuna.tsinghua.edu.cn/simple && echo 'set-option -g default-shell /bin/bash' >> ~/.tmux.conf
 ```
 
 ## Download apps from our pre-built version (faster)
@@ -101,43 +101,67 @@ cd ~/agile_autonomy_ws && catkin init && catkin config --extend /opt/ros/melodic
 ```
 Before you finally launch the project, restart the container/machine is recommanded. 
 
-# Launch the project
-## Open a terminal for simulation (velocity control)
+# Let's Fly!
+## Test on Flightmare Simulation
+Open a terminal for simulation (mode: position control/velocity control)
 ```sh
 cd ~/agile_autonomy_ws && source devel/setup.sh
 ```
-[Default] Single Machine:
 ```sh
 roslaunch agile_autonomy simulation.launch
 ```
-
-[Optional] If you want to use the communication of the two local machines, please add these environmental variables to your `bashrc`:
-```
-export ROS_IP=[slaver_ip]
-export ROS_MASTER_URI=http://[master_ip]:11311
-export ROS_HOSTNAME=$ROS_IP
-```
-And then the master machine can run:
-```sh
-roslaunch agile_autonomy simulation_dist_master.launch
-```
-Likewise, the slaver machine can run:
-```sh
-roslaunch agile_autonomy simulation_dist_slaver.launch
-```
-
-[Optional] Run without rendering Fightmare simulation (Necessary for training in powerful servers)
-```sh
-roslaunch agile_autonomy simulation_backend.launch
-```
-
-## Open a new terminal (test AI-based navigation)
+Open a new terminal (mode: feedforward)
 ```sh
 cd ~/agile_autonomy_ws && source devel/setup.sh && source ../cv_bridge_ws/install/setup.sh --extend
 ```
 ```sh
 roscd planner_learning && python3 test_trajectories.py --settings_file=config/test_settings.yaml
 ```
+## Test on Real Deployment [Need to RE-implement]
+Todo
+
+# Train your own navigation policy
+You can use the following commands to generate data in simulation and train your model on it. Note that training a policy from scratch could require a lot of data, and depending on the speed of your machine this could take several days. Therefore, we always recommend finetuning the provided checkpoint to your use case. As a general rule of thumb, you need a dataset with comparable size to ours to train a policy from scratch, but only 1/10th of it to finetune.
+
+## Single Machine
+To train or finetune a policy, use the following commands: Launch the simulation in one terminal
+```sh
+cd ~/agile_autonomy_ws && source devel/setup.bash
+```
+```sh
+roslaunch agile_autonomy simulation.launch
+```
+Launch data collection (with dagger) in an other terminal
+```sh
+cd ~/agile_autonomy_ws && source devel/setup.bash && source ../cv_bridge_ws/install/setup.sh --extend
+```
+```sh
+roscd planner_learning && python3 dagger_training.py --settings_file=config/dagger_settings.yaml
+```
+
+
+## Distributed Training [Need to RE-implement]
+If you want to use the communication of the two local machines, please add these environmental variables to your `bashrc` (default ip is `localhost`):
+```
+export ROS_IP=[slaver_ip]
+export ROS_MASTER_URI=http://[master_ip]:11311
+export ROS_HOSTNAME=$ROS_IP
+```
+And then the master machine can run in two shells:
+```sh
+cd ~/agile_autonomy_ws && source devel/setup.bash && roslaunch agile_autonomy master.launch
+```
+```sh
+cd ~/agile_autonomy_ws && source devel/setup.bash && source ../cv_bridge_ws/install/setup.sh --extend && roscd planner_learning && python3 dagger_training_master.py --settings_file=config/dagger_settings.yaml
+```
+Likewise, the slaver machine can run:
+```sh
+cd ~/agile_autonomy_ws && source devel/setup.bash && source ../cv_bridge_ws/install/setup.sh --extend && roslaunch agile_autonomy slaver.launch
+```
+```sh
+cd ~/agile_autonomy_ws && source devel/setup.bash && source ../cv_bridge_ws/install/setup.sh --extend && roscd planner_learning && python3 dagger_training_slaver.py --settings_file=config/dagger_settings.yaml
+```
+
 
 
 # TroubleShooting
@@ -151,4 +175,62 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:<proxy-port
 
 # unset
 git config --global --unset http.proxy && git config --global --unset https.proxy
+
+# buffer
+git config --global http.postBuffer 524288000
 ```
+
+
+2. Recompile Quadrotor model. It is necessary for changing hyper parameters of MPC in real application.
+Install the package
+```sh
+cd ~ && git clone https://github.com/acado/acado.git -b stable ACADOtoolkit && cd ~/ACADOtoolkit && mkdir build && cd build && cmake .. && make && cd .. && cd examples/getting_started && ./simple_ocp
+```
+It means successful by seeing a plotted window. **Every time when we want to recompile quadrotor model**, we need to start by:
+```
+source /home/qiyuan/ACADOtoolkit/build/acado_env.sh
+```
+Delete `quadrotor_model_codegen` and `quadrotor_mpc_codegen` in `rpg_mpc/model/`. Then, we can modify our model in `quadrotor_model_thrustrates.cpp` and rebuild:
+```sh
+# generate quadrotor_model_codegen
+cd ~/agile_autonomy_ws/src/rpg_mpc/model/ && cmake . && make
+
+# generate quadrotor_mpc_codegen
+./quadrotor_model_codegen
+```
+Next, we also need to modify `parameters` in `rpg_quadrotor_control/simulation/rpg_rotors_interface`.
+
+3. Tips of Deployment
+
+* Can not find our on-board resources 
+```sh
+vim /etc/hosts
+## Add:
+## 192.168.1.111 TX2
+## 192.168.1.100 GCS
+```
+
+* Pipelines (based on my memory, not percisely)
+```sh
+## autopilot
+roslaunch qiyuan-rpg launch_files/archaeopteryx.launch
+
+## simulation
+roslaunch agile_autonomy master.launch
+
+## python files
+source devel/setup.bash && source cv_bridge_ws/install/setup.sh --extend && roscd planner_learning && python3 deployment.py --deployment_settings.yaml
+
+# rviz
+roslaunch rviz
+```
+
+* Numpy core-down
+```sh
+## Add to ~/.bashrc
+export OPENBLAS_CORETYPE = ARMv8
+```
+
+* `rpg_quadrotor_control` may record the running states of mpc by using `rosbag`.
+
+* From LeakyCauldron: Real frequency of simulation is 200 Hz (5 times), but our required frequency is 500 HZ (25 times). Another bug is that we set the computational latency to 0 instead of 30ms for our on-board resources.

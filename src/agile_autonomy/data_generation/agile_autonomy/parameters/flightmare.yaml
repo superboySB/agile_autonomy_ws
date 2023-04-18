@@ -1,3 +1,7 @@
+# [SB] Environment Change:
+# Set either the spawn_trees or spawn_objects to true. 
+# Doing both at the same time is possible but would make the environment too dense for navigation. 
+# Also adapt the spacings parameter in test_settings.yaml to the environment.
 unity:
   spawn_trees: true
   spawn_objects: false
