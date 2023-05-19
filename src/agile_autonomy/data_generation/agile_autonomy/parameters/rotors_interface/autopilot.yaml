@@ -6,13 +6,14 @@ start_land_velocity: 0.5 # [m/s]
 start_land_acceleration: 1 # [m/s^2]
 start_idle_duration: 2.0 # [s]
 idle_thrust: 2.0 # [m/s]
-optitrack_start_height: 3.1 # [m]
+optitrack_start_height: 3.1 # [m] -- [SB] Control start height
 optitrack_start_land_timeout: 10 # [s]
 optitrack_land_drop_height: 0.3 # [m]
 propeller_ramp_down_timeout: 1.5 # [s]
 
 breaking_velocity_threshold: 0.2 # [m/s]
-breaking_timeout: 0.5 # [s]
+breaking_timeout: 3 # [s] -- [SB] Control breaking timeout
+# breaking_timeout: 0.5 # [s]
 
 go_to_pose_max_velocity: 1.5 # [m/s]
 go_to_pose_max_normalized_thrust: 12.0 # [m/s^2]

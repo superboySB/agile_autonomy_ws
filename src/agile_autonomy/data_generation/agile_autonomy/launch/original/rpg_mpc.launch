@@ -9,7 +9,7 @@
     <group ns="$(arg quad_name)">
         <group if="$(arg use_ground_truth)">
             <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-                <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
                 <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
                 <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
                 <param name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>
@@ -23,7 +23,7 @@
 
         <group unless="$(arg use_ground_truth)">
             <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-                <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+                <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
                 <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
                 <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
                 <param name="velocity_estimate_in_world_frame" value="$(arg velocity_estimate_in_world_frame)"/>

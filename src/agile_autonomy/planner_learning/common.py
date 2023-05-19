@@ -10,21 +10,21 @@ from pyquaternion import Quaternion
 
 class MessageHandler():
     def __init__(self):
-        self.autopilot_off = rospy.Publisher("/hummingbird/autopilot/off", Empty,
+        self.autopilot_off = rospy.Publisher("/flappybird/autopilot/off", Empty,
                                              queue_size=1)
-        self.arm_bridge = rospy.Publisher("/hummingbird/bridge/arm", Bool,
+        self.arm_bridge = rospy.Publisher("/flappybird/bridge/arm", Bool,
                                           queue_size=1)
-        self.autopilot_start = rospy.Publisher("/hummingbird/autopilot/start", Empty,
+        self.autopilot_start = rospy.Publisher("/flappybird/autopilot/start", Empty,
                                                queue_size=1)
-        self.autopilot_pose_cmd = rospy.Publisher("/hummingbird/autopilot/pose_command",
+        self.autopilot_pose_cmd = rospy.Publisher("/flappybird/autopilot/pose_command",
                                                   PoseStamped, queue_size=1)
-        self.tree_spacing_cmd = rospy.Publisher("/hummingbird/tree_spacing",
+        self.tree_spacing_cmd = rospy.Publisher("/flappybird/tree_spacing",
                                                 Float32, queue_size=1)
-        self.obj_spacing_cmd = rospy.Publisher("/hummingbird/object_spacing",
+        self.obj_spacing_cmd = rospy.Publisher("/flappybird/object_spacing",
                                                Float32, queue_size=1)
         self.reset_exp_pub = rospy.Publisher("/success_reset",
                                              Empty, queue_size=1)
-        self.save_pc_pub = rospy.Publisher("/hummingbird/save_pc",
+        self.save_pc_pub = rospy.Publisher("/flappybird/save_pc",
                                            Bool, queue_size=1)
 
     def publish_autopilot_off(self):
@@ -95,7 +95,7 @@ def setup_sim(msg_handler, config):
     start_quaternion = Quaternion(axis=[0,0,1], angle=position[-1]).elements
 
     start_string = "rosservice call /gazebo/set_model_state " + \
-     "'{model_state: { model_name: hummingbird, pose: { position: { x: %f, y: %f ,z: %f }, " % (position[0],position[1],position[2]) + \
+     "'{model_state: { model_name: flappybird, pose: { position: { x: %f, y: %f ,z: %f }, " % (position[0],position[1],position[2]) + \
      "orientation: {x: %f, y: %f, z: %f, w: %f}}, " % (start_quaternion[1],start_quaternion[2],start_quaternion[3],start_quaternion[0]) + \
      "twist:{ linear: {x: 0.0 , y: 0 ,z: 0 } , angular: { x: 0.0 , y: 0 , z: 0.0 }}, " + \
      "reference_frame: world } }'"

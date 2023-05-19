@@ -1,5 +1,5 @@
 log_dir: '~/train_log/'
-quad_name: 'hummingbird'
+quad_name: 'flappybird'
 odometry_topic: 'ground_truth/odometry'
 rgb_topic: 'agile_autonomy/unity_rgb'
 depth_topic: 'agile_autonomy/sgm_depth'
@@ -19,8 +19,8 @@ data_generation:
   expert_folder: "../data_generation/data"
   increase_net_usage_every_n_rollouts: 10
 checkpoint:
-  resume_training: True
-  resume_file: "models/original/ckpt-50"
+  resume_training: False
+  resume_file: "models/ckpt-xx"
 train:
   max_training_epochs: 5
   batch_size: 8
@@ -40,7 +40,7 @@ test_time:
   perform_inference: True # If `False` completely disables network forward passes
   accept_thresh: 0.9 # when ratio btw other and best score is larger than this, other trajectory will be sent as well.
   input_update_freq: 15 #Hz
-  fallback_radius_expert: 10 #m distance to trajectory to switch back. Put to zero when training from scratch
+  fallback_radius_expert: 0 # m distance to trajectory to switch back. Put to zero when training from scratch (defaults:10)
   network_frequency: 15.0 #Hz
   crashed_thr: 0.20 # 10 cm from a point is crash
 verbose: False # saving net inputs

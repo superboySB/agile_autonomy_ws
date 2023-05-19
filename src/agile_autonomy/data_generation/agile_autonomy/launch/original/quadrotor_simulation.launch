@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="quad_name" default="hummingbird"/>
+    <arg name="quad_name" default="flappybird"/>
 
     <arg name="mav_name" default="$(arg quad_name)"/>
     <arg name="model" value="$(find agile_autonomy)/resources/urdf/mav_generic_odometry_sensor_rgb.gazebo"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="quad_name" default="hummingbird"/>
+    <arg name="quad_name" default="flappybird"/>
 
     <arg name="model" value="$(find agile_autonomy)/resources/urdf/mav_generic_odometry_sensor_rgb.gazebo"/>
     <arg name="world_name" value="$(find agile_autonomy)/resources/worlds/simple.world"/>
@@ -51,8 +51,8 @@
     <param name="/$(arg quad_name)/agile_autonomy/general/velocity_estimate_in_world_frame" value="false"/>
     <param name="/$(arg quad_name)/agile_autonomy/general/process_every_nth_odometry" value="20"/>
     <!-- hacky parameters to change takeoff -->
-    <param name="/hummingbird/autopilot/optitrack_start_height" value="2.0"/>
-    <param name="/hummingbird/autopilot/optitrack_start_land_timeout" value="20.0"/>
+    <param name="/flappybird/autopilot/optitrack_start_height" value="2.0"/>
+    <param name="/flappybird/autopilot/optitrack_start_land_timeout" value="20.0"/>
 
     <group ns="$(arg quad_name)">
         <!-- Trajectory Planning -->
@@ -60,7 +60,7 @@
             <rosparam file="$(find agile_autonomy)/parameters/default.yaml"/>
             <rosparam file="$(find agile_autonomy)/parameters/flightmare.yaml"/>
             <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
-            <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+            <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
             <param name="data_dir" value="$(find agile_autonomy)/../data"/>
             <remap from="completed_global_plan" to="/test_primitive/completed_planning"/>
         </node>

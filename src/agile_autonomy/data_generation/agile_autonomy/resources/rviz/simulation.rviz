@@ -85,12 +85,12 @@ Visualization Manager:
             Shaft Length: 1
             Shaft Radius: 0.05000000074505806
             Value: Axes
-          Topic: /hummingbird/ground_truth/odometry
+          Topic: /flappybird/ground_truth/odometry
           Unreliable: false
           Value: true
         - Class: rviz/MarkerArray
           Enabled: false
-          Marker Topic: /hummingbird/quadrotor_viz
+          Marker Topic: /flappybird/quadrotor_viz
           Name: Quadrotor Body
           Namespaces:
             {}
@@ -121,12 +121,12 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/vio_mpc_path
+          Topic: /flappybird/vio_mpc_path
           Unreliable: false
           Value: false
         - Class: rviz/MarkerArray
           Enabled: false
-          Marker Topic: /hummingbird/active_reference
+          Marker Topic: /flappybird/active_reference
           Name: Active Reference
           Namespaces:
             {}
@@ -153,7 +153,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/path/control_ref
+          Topic: /flappybird/path/control_ref
           Unreliable: false
           Value: false
         - Alpha: 1
@@ -177,7 +177,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/agile_autonomy/path/executed_reference
+          Topic: /flappybird/agile_autonomy/path/executed_reference
           Unreliable: false
           Value: true
         - Alpha: 1
@@ -201,12 +201,12 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/agile_autonomy/path/executed_trajectory
+          Topic: /flappybird/agile_autonomy/path/executed_trajectory
           Unreliable: false
           Value: true
         - Class: rviz/MarkerArray
           Enabled: false
-          Marker Topic: /hummingbird/agile_autonomy/trajectory/nominal_reference
+          Marker Topic: /flappybird/agile_autonomy/trajectory/nominal_reference
           Name: Nominal Reference
           Namespaces:
             {}
@@ -214,7 +214,7 @@ Visualization Manager:
           Value: false
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /hummingbird/agile_autonomy/trajectory/fitted_reference
+          Marker Topic: /flappybird/agile_autonomy/trajectory/fitted_reference
           Name: Fitted Reference
           Namespaces:
             "": true
@@ -226,7 +226,7 @@ Visualization Manager:
       Displays:
         - Class: rviz/Image
           Enabled: true
-          Image Topic: /hummingbird/agile_autonomy/unity_rgb
+          Image Topic: /flappybird/agile_autonomy/unity_rgb
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -238,7 +238,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/Image
           Enabled: false
-          Image Topic: /hummingbird/agile_autonomy/unity_depth
+          Image Topic: /flappybird/agile_autonomy/unity_depth
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -250,7 +250,7 @@ Visualization Manager:
           Value: false
         - Class: rviz/Image
           Enabled: false
-          Image Topic: /hummingbird/agile_autonomy/sgm_depth
+          Image Topic: /flappybird/agile_autonomy/sgm_depth
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -266,7 +266,7 @@ Visualization Manager:
       Displays:
         - Class: rviz/MarkerArray
           Enabled: false
-          Marker Topic: /hummingbird/agile_autonomy/trajectory/raw_nw_prediction
+          Marker Topic: /flappybird/agile_autonomy/trajectory/raw_nw_prediction
           Name: Raw Trajectories
           Namespaces:
             {}
@@ -274,7 +274,7 @@ Visualization Manager:
           Value: false
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /hummingbird/agile_autonomy/trajectory/selected_nw_prediction
+          Marker Topic: /flappybird/agile_autonomy/trajectory/selected_nw_prediction
           Name: Selected Trajectory
           Namespaces:
             {}
@@ -282,7 +282,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /hummingbird/agile_autonomy/trajectory/fitted_nw_prediction
+          Marker Topic: /flappybird/agile_autonomy/trajectory/fitted_nw_prediction
           Name: Fitted Trajectory
           Namespaces:
             {}
@@ -290,7 +290,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/MarkerArray
           Enabled: false
-          Marker Topic: /hummingbird/agile_autonomy/trajectory/arclen_nw_prediction
+          Marker Topic: /flappybird/agile_autonomy/trajectory/arclen_nw_prediction
           Name: Arclen Trajectory
           Namespaces:
             {}
@@ -317,7 +317,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/agile_autonomy/path/raw_nw_prediction
+          Topic: /flappybird/agile_autonomy/path/raw_nw_prediction
           Unreliable: false
           Value: false
         - Alpha: 1
@@ -341,7 +341,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/agile_autonomy/path/selected_nw_prediction
+          Topic: /flappybird/agile_autonomy/path/selected_nw_prediction
           Unreliable: false
           Value: false
         - Alpha: 1
@@ -365,7 +365,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/agile_autonomy/path/fitted_nw_prediction
+          Topic: /flappybird/agile_autonomy/path/fitted_nw_prediction
           Unreliable: false
           Value: false
         - Alpha: 1
@@ -389,12 +389,12 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /hummingbird/agile_autonomy/path/arclen_nw_prediction
+          Topic: /flappybird/agile_autonomy/path/arclen_nw_prediction
           Unreliable: false
           Value: false
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /hummingbird/agile_autonomy/planned_trajectory
+          Marker Topic: /flappybird/agile_autonomy/planned_trajectory
           Name: Planned Trajectory
           Namespaces:
             "": true
@@ -404,7 +404,7 @@ Visualization Manager:
       Name: Trajectories
     - Class: rviz/Marker
       Enabled: false
-      Marker Topic: /hummingbird/agile_autonomy/pointcloud_viz
+      Marker Topic: /flappybird/agile_autonomy/pointcloud_viz
       Name: Pointcloud Viz
       Namespaces:
         {}

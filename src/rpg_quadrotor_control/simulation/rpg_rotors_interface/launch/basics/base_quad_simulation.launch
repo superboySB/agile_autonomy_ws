@@ -64,7 +64,7 @@
       <!-- Autopilot -->
       <group unless="$(arg use_mpc)">
         <node pkg="autopilot" type="autopilot" name="autopilot" output="screen">
-          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/position_controller.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
@@ -80,7 +80,7 @@
       </group>
       <group if="$(arg use_mpc)">
         <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
@@ -105,7 +105,7 @@
       <!-- Autopilot -->
       <group unless="$(arg use_mpc)">
         <node pkg="autopilot" type="autopilot" name="autopilot" output="screen">
-          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/position_controller.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 
@@ -120,7 +120,7 @@
       </group>
       <group if="$(arg use_mpc)">
         <node pkg="rpg_mpc" type="autopilot_mpc_instance" name="autopilot" output="screen">
-          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/hummingbird.yaml"/>
+          <rosparam file="$(find agile_autonomy)/parameters/state_predictor/flappybird.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/mpc_params.yaml"/>
           <rosparam file="$(find agile_autonomy)/parameters/rotors_interface/autopilot.yaml"/>
 

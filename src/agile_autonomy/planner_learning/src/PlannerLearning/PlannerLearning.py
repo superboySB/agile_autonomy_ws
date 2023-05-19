@@ -30,11 +30,11 @@ class PlanLearning(PlanBase):
             self.end_ref_percentage = 0.95
         else:
             self.end_ref_percentage = 0.8
-        self.data_pub = rospy.Publisher("/hummingbird/agile_autonomy/start_flying", Bool,
+        self.data_pub = rospy.Publisher("/flappybird/agile_autonomy/start_flying", Bool,
                                         queue_size=1)  # Stop upon some condition
         self.planner_succed_sub = rospy.Subscriber("/test_primitive/completed_planning",
                                                   Bool, self.planner_succed_callback, queue_size=1)
-        self.label_data_pub = rospy.Publisher("/hummingbird/start_label", Bool,
+        self.label_data_pub = rospy.Publisher("/flappybird/start_label", Bool,
                                               queue_size=1)  # Stop upon some condition
         self.success_subs = rospy.Subscriber("success_reset", Empty,
                                              self.callback_success_reset,

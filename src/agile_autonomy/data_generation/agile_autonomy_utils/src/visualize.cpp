@@ -303,7 +303,7 @@ void Visualizer::create_vehicle_markers(int num_rotors, float arm_len,
   // rotor marker template
   visualization_msgs::Marker rotor;
   rotor.header.stamp = ros::Time();
-  rotor.header.frame_id = "/hummingbird/base_link";
+  rotor.header.frame_id = "/flappybird/base_link";
   rotor.ns = "vehicle_rotor";
   rotor.action = visualization_msgs::Marker::ADD;
   rotor.type = visualization_msgs::Marker::CYLINDER;
@@ -319,7 +319,7 @@ void Visualizer::create_vehicle_markers(int num_rotors, float arm_len,
   // arm marker template
   visualization_msgs::Marker arm;
   arm.header.stamp = ros::Time();
-  arm.header.frame_id = "/hummingbird/base_link";
+  arm.header.frame_id = "/flappybird/base_link";
   arm.ns = "vehicle_arm";
   arm.action = visualization_msgs::Marker::ADD;
   arm.type = visualization_msgs::Marker::CUBE;
@@ -352,7 +352,7 @@ void Visualizer::create_vehicle_markers(int num_rotors, float arm_len,
   // body marker template
   visualization_msgs::Marker body;
   body.header.stamp = ros::Time();
-  body.header.frame_id = "/hummingbird/base_link";
+  body.header.frame_id = "/flappybird/base_link";
   body.ns = "vehicle_body";
   body.action = visualization_msgs::Marker::ADD;
   body.type = visualization_msgs::Marker::CUBE;

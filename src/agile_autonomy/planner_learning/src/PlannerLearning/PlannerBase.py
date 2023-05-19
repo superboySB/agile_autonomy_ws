@@ -202,7 +202,7 @@ class PlanBase(object):
         Reads a depth image and saves it.
         '''
         try:
-            if self.quad_name == 'hummingbird':
+            if self.quad_name == 'flappybird':
                 depth = self.bridge.imgmsg_to_cv2(data, '16UC1')
                 # print("============================================================")
                 # print("Min Depth {}. Max Depth {}. with Nans {}".format(np.min(depth),
